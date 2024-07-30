@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_doctor_receptionist_id,access.doctor.receptionist.id,model_doctor_model,group_hospital_receptionist,1,0,0,0
+access_doctor_id,access.doctor.id,model_doctor_model,group_hospital_doctor,1,1,1,1
+access_doctor_patient_id,access.doctor.patient.id,model_doctor_model,group_hospital_patient,1,0,0,0
+access_doctor_manager_id,access.doctor.manager.id,model_doctor_model,group_hospital_manager,1,1,1,1
+access_patient_id,access.patient.id,model_patient_model,group_hospital_patient,1,1,1,1
+access_patient_receptionist_id,access.patient.receptionist.id,model_patient_model,group_hospital_receptionist,1,1,1,1
+access_patient_manager_id,access.patient.manager.id,model_patient_model,group_hospital_manager,1,1,1,1
+access_appointment_id,access.appointment.id,model_appointment_model,group_hospital_receptionist,1,1,1,1
+access_appointment_patient_id,access.appointment.patient.id,model_appointment_model,group_hospital_patient,1,0,0,0
+access_appointment_doctor_id,access.appointment.doctor.id,model_appointment_model,group_hospital_doctor,1,0,0,0
+access_appointment_manager_id,access.appointment.manager.id,model_appointment_model,group_hospital_manager,1,1,1,1
+access_patient_bill_wizard,access.patient.bill.wizard,model_patient_bill_model,group_hospital_receptionist,1,1,1,1
+access_patient_bill_wizard_manager,access.patient.bill.wizard.manager,model_patient_bill_model,group_hospital_manager,1,1,1,1

@@ -1,0 +1,34 @@
+<odoo>
+    <record id="patient_bill_wizard_view" model="ir.ui.view">
+        <field name="name">patient.bill.wizard.view</field>
+        <field name="model">patient.bill.model</field>
+        <field name="arch" type="xml">
+            <form name="patient_wizard_form_id" string="Patient Bill">
+                <sheet>
+                    <group name="patient_wizard_group">
+                        <group name="patient_wizard_group_1">
+                            <field name="patient_name"/>
+                            <field name="doctor_name"/>
+                        </group>
+                        <group name="patient_wizard_group_2">
+                            <field name="appointment_date"/>
+                            <field name="note"/>
+                        </group>
+                        <group name="patient_wizard_group_3">
+                            <field name="fee_paid"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Close" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_patient_bill_wizard" model="ir.actions.act_window">
+        <field name="name">action.patient.bill.wizard</field>
+        <field name="res_model">patient.bill.model</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
