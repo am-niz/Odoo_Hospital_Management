@@ -4,32 +4,51 @@
         <field name="name">Hospital</field>
         <field name="sequence">5</field>
     </record>
+
     # Receptionist Group-------------------------------------------------------------------------------->
     <record id="group_hospital_receptionist" model="res.groups">
         <field name="name">Receptionist</field>
         <field name="category_id" ref="hospital.module_category_hospital"/>
 <!--        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>-->
     </record>
+
     # Doctor Group---------------------------------------------------------------------------------------->
     <record id="group_hospital_doctor" model="res.groups">
         <field name="name">Doctor</field>
         <field name="category_id" ref="hospital.module_category_hospital"/>
 <!--        <field name="implied_ids" eval="[(4, ref('hospital.group_hospital_receptionist'))]"/>-->
     </record>
+
     # Manager Group---------------------------------------------------------------------------------------->
     <record id="group_hospital_manager" model="res.groups">
         <field name="name">Manager</field>
         <field name="category_id" ref="hospital.module_category_hospital"/>
     </record>
+
     # Patient Group----------------------------------------------------------------------------------------->
     <record id="group_hospital_patient" model="res.groups">
         <field name="name">Patient</field>
         <field name="category_id" ref="hospital.module_category_hospital"/>
     </record>
 
+    # doctors only view their own records--------------------------------------------------------------------->
+    <record id="rule_doctor_own_record_id" model="ir.rule">
+        <field name="name">Doctor can only see and edit own record</field>
+        <field name="model_id" ref="model_doctor_model"/>
+        <field name="groups" eval="[(4, ref('group_hospital_doctor'))]"/>
+        <field name="domain_force">[("user_id", "=", user.id)]</field>
+    </record>
+
+    #Patients only view their own records----------------------------------------------------------------------->
+    <record id="rule_patient_own_records_id" model="ir.rule">
+        <field name="name">Patient can only see and edit own record</field>
+        <field name="model_id" ref="model_patient_model"/>
+        <field name="groups" eval="[(4, ref('group_hospital_patient'))]"/>
+        <field name="domain_force">[("user_id", "=", user.id)]</field>
+    </record>
 
 
-
+<!--administration type    -->
 <!--    <record id="group_hospital_manager" model="res.groups">-->
 <!--        <field name="name">Hospital / Manager</field>-->
 <!--        <field name="category_id"-->

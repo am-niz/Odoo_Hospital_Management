@@ -5,11 +5,11 @@
     'summary': "Hostpital Managements",
 
     'description': """
-Long description of module's purpose
+Hospital management includes doctor, appointment and patient managements
     """,
 
-    'author': "My Company",
-    'website': "https://www.yourcompany.com",
+    'author': "NIZAMUDHEEN MJ",
+    'website': "https://github.com/am-niz",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
@@ -24,12 +24,13 @@ Long description of module's purpose
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
+        'wizards/patient_bill_wizard_view.xml',
         'views/doctor_view.xml',
         'views/patient_view.xml',
         'views/appointment_view.xml',
-        'wizards/patient_bill_wizard_view.xml',
         'views/hospital_menu.xml',
+        'report/action_report.xml',
+        'report/patient_card.xml',
     ],
-    # only loaded in demonstration mode
 }
 

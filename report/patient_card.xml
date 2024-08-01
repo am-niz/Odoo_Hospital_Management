@@ -1,0 +1,51 @@
+<odoo>
+    <template id="report_patient_card_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <t t-call="web.external_layout">
+                        <div class="oe_structure">
+                            <div class="row">
+                                <div class="col-12">
+                                    <table class="table table-bordered" style="border: 3px solid black !important;">
+                                        <tr>
+                                            <td width="40%" style="vertical-align: middle;">
+                                                <p style="text-align:center;">
+                                                    <img t-if="not o.patient_id.patient_image"
+                                                         t-att-src="'/web/static/src/img/placeholder.png'" height="140"
+                                                         style="max-width: 100%; height: auto;"/>
+                                                    <img t-if="o.patient_id.patient_image"
+                                                         t-att-src="image_data_uri(o.patient_id.patient_image)" height="140"
+                                                         style="max-width: 100%; height: auto;"/>
+                                                </p>
+                                            </td>
+                                            <td width="60%">
+                                                <table class="table table-sm" style="margin-bottom: 0;">
+                                                    <tr>
+                                                        <td colspan="3" class="text-center">
+                                                            <strong><span t-field="o.patient_id.patient_name" style="font-size: 18px;"/></strong>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="30%"><strong>Age</strong></td>
+                                                        <td width="5%">:</td>
+                                                        <td width="65%"><span t-field="o.patient_id.patient_age"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Gender</strong></td>
+                                                        <td>:</td>
+                                                        <td><span t-field="o.patient_id.patient_gender"/></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

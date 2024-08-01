@@ -1,0 +1,11 @@
+<odoo>
+    <record id="report_patient_card" model="ir.actions.report">
+        <field name="name">Patient Card</field>
+        <field name="model">appointment.model</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_file">hospital.report_patient_card_template</field>
+        <field name="report_name">hospital.report_patient_card_template</field>
+        <field name="binding_model_id" ref="hospital.model_appointment_model"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

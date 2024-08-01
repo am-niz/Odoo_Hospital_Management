@@ -7,7 +7,8 @@
         <field name="patient_name"/>
         <field name="patient_age"/>
         <field name="patient_gender"/>
-        <field name="patient_image" widget="image" options="{'preview_image': 'patient_image', 'size': [90, 90]}" class="oe_avatar"/>
+        <field name="patient_image"
+               widget="image" options="{'preview_image': 'patient_image', 'size': [90, 90]}" class="oe_avatar"/>
       </tree>
     </field>
   </record>
@@ -17,7 +18,11 @@
     <field name="arch" type="xml">
       <form string="Patient Info">
         <sheet>
-          <field name="patient_image" widget="image" options="{'preview_image': 'patient_image', 'size': [200, 200]}" class="oe_avatar" nolabel="1"/>
+          <field name="patient_image"
+                 widget="image"
+                 options="{'preview_image': 'patient_image', 'size': [200, 200]}"
+                 class="oe_avatar"
+                 nolabel="1"/>
           <div class="oe_title">
             <h1>
               <field name="patient_name" placeholder="Patient's Name"/>
@@ -26,23 +31,40 @@
           <group name="patient_basic_info_id">
             <field name="patient_gender" widget="radio" options="{'horizontal': 'True'}"/>
             <field name="patient_age" placeholder="Patient's Age" class="oe_inline"/>
+            <field name="user_id" widget="selection" class="oe_inline"/>
           </group>
             <notebook>
               <page string="Patient Information">
                 <group name="patient_info_id">
                   <group name="patient_info_id1">
-                    <field name="patient_phone" placeholder="+91 234 23423" widget="phone" class="oe_inline" style="padding: 5px; border: 1px solid;"/>
-                    <field name="patient_email" placeholder="xyz@emial.com" widget="email" style="width: 100%; padding: 5px; border: 1px solid;"/>
-                    <field name="patient_address" placeholder="Patient address here.." widget="text" style="width: 100%; padding: 5px; border: 1px solid;"/>
-                  </group>
-                  <group name="patient_other_det_id2">
-                    <field name="patient_blood_group" widget="selection" class="oe_inline" style="padding: 5px; border: 1px solid;"/>
-                    <field name="doctor_id" placeholder="Doctor's Name" widget="selection" class="oe_inline" style="padding: 5px; border: 1px solid;"/>
+                    <field name="patient_phone"
+                           placeholder="+91 234 23423"
+                           widget="phone" class="oe_inline"
+                           style="padding: 5px; border: 1px solid;"/>
+                    <field name="patient_email"
+                           placeholder="xyz@emial.com"
+                           widget="email"
+                           style="width: 100%; padding: 5px; border: 1px solid;"/>
+                    <field name="patient_address"
+                           placeholder="Patient address here.."
+                           widget="text"
+                           style="width: 100%; padding: 5px; border: 1px solid;"/>
+                    <field name="patient_blood_group"
+                           widget="selection"
+                           class="oe_inline"
+                           style="padding: 5px; border: 1px solid;"/>
                   </group>
                 </group>
               </page>
               <page string="Appointment">
-                <field name="appointment_ids"/>
+                <field name="appointment_ids">
+                  <tree editable="1">
+                    <field name="appointment_date"/>
+                    <field name="is_fee_pay"/>
+                    <field name="state"/>
+                    <field name="patient_note"/>
+                  </tree>
+                </field>
               </page>
             </notebook>
         </sheet>

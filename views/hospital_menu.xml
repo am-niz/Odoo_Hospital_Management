@@ -3,23 +3,22 @@
               name="Hospital"
               web_icon="hospital,static/description/icon.png"/>
 
-    <menuitem id="hospital_sub_root_menu_id"
-              name="Hospital Details"
-              parent="hospital_root_menu_id"/>
-
     <menuitem id="doc_sub_menu_id"
               name="Doctors"
               parent="hospital_root_menu_id"
-              action="action_doc_id"/>
+              action="action_doc_id"
+              groups="group_hospital_manager,group_hospital_doctor"/>
 
     <menuitem id="patient_sub_menu_id"
               name="Patients"
               parent="hospital_root_menu_id"
+              groups="group_hospital_manager,group_hospital_receptionist,group_hospital_patient"
               action="action_patient_id"/>
 
     <menuitem id="appointment_sub_menu_id"
               name="Appointments"
               parent="hospital_root_menu_id"
+              groups="group_hospital_manager,group_hospital_receptionist"
               action="action_appointment_id"/>
 </odoo>
 

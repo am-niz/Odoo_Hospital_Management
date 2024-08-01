@@ -7,6 +7,7 @@ class Doctor(models.Model):
     _rec_name = "doctor_name"
 
     # Basic information------------------------------------------------------------------------------------>
+    user_id = fields.Many2one('res.users', string='Related User')
     doctor_image = fields.Image(max_width=100, max_height=100, string="Image")
     doctor_name = fields.Char(string="Name", required=True)
     specialization = fields.Selection([
@@ -59,7 +60,8 @@ class Doctor(models.Model):
             "res_model": "appointment.model",
             "type": "ir.actions.act_window",
             "target": "new",
-            "view_mode": "tree,form",
+            "view_mode": "tree",
             "domain": [("doctor_id", "=", self.id), ("state", "=", "confirm")],
-            "context": {"create": False}
+            "context": {"create": False},
+            "views": [(self.env.ref("hospital.appointment_doctor_tree_view_id").id, "tree")]
         }
