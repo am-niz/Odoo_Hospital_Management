@@ -32,5 +32,7 @@ Hospital management includes doctor, appointment and patient managements
         'report/action_report.xml',
         'report/patient_card.xml',
     ],
+    "application": True,
+    "sequence": -100,
 }
 

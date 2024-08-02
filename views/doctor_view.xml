@@ -9,7 +9,7 @@
                 <field name="doctor_image" widget="image" options="{'preview_image': 'doctor_image', 'size': [50, 50]}"/>
                 <field name="doctor_active_status"/>
                 <field name="doctor_gender"/>
-          </tree>
+            </tree>
         </field>
     </record>
     <record id="view_kanban_doctor_id" model="ir.ui.view">
@@ -19,7 +19,7 @@
             <kanban class="o_kanban_mobile">
                 <field name="doctor_name"/>
                 <field name="specialization"/>
-<!--                <field name="doctor_image" widget="image" options="{'preview_image': 'doctor_image', 'size': [50, 50]}"/>-->
+                <field name="doctor_image"/>
                 <field name="doctor_image"/>
                 <field name="doctor_active_status"/>
                 <field name="doctor_gender"/>
@@ -27,24 +27,22 @@
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_global_click">
                             <div class="o_kanban_image">
-                                <img alt="Doctor Image" t-att-src="record.doctor_image.value"/>
+                                <field name="doctor_image" widget="image" options="{'preview_image': 'doctor_image', 'size': [60, 110]}"/>
                             </div>
                             <div class="oe_kanban_details">
                                 <ul>
-                                    <li class="text-success float-end mb4" t-if="record.doctor_active_status.raw_value"><i class="fa fa-circle" role="img" aria-label="Active" title="Active"/></li>
-                                    <li class="text-danger float-end mb4" t-if="!record.doctor_active_status.raw_value"><i class="fa fa-circle" role="img" aria-label="Inactive" title="Inactive"/></li>
-                                    <li class="mb4">
-                                        <strong><field name="doctor_name"/></strong>
-                                    </li>
-                                    <li class="d-flex flex-wrap">
-                                        <span class="mb4 text-truncate" title="Specialization">
-                                            <i class="fa fa-stethoscope me-1" role="img" aria-label="Specialization"/>
+                                    <li class="text-success fa fa-circle float-end" title="Active" t-if="record.doctor_active_status.raw_value"/>
+                                    <li class="text-danger fa fa-circle float-end" title="Inactive" t-if="!record.doctor_active_status.raw_value"/>
+                                    <strong><field name="doctor_name"/></strong>
+                                    <li>
+                                        <span title="Specialization">
+                                            <i class="fa fa-stethoscope me-1"/>
                                             <field name="specialization"/>
                                         </span>
                                     </li>
-                                    <li class="d-flex flex-wrap">
-                                        <span class="mb4 text-truncate" title="Gender">
-                                            <i class="fa fa-user me-1" role="img" aria-label="Gender"/>
+                                    <li>
+                                        <span title="Gender">
+                                            <i class="fa fa-user me-1"/>
                                             <field name="doctor_gender"/>
                                         </span>
                                     </li>
@@ -56,92 +54,89 @@
             </kanban>
         </field>
     </record>
-  <record id="doctor_form_view_id" model="ir.ui.view">
-    <field name="name">doctor.form.view.id</field>
-    <field name="model">doctor.model</field>
-    <field name="arch" type="xml">
-      <form string="Doctor Info">
-        <sheet>
-            <div name="button_box">
-                <button name="display_confirmed_patients" type="object" icon="fa-calendar-check-o">
-                    <field name="confirmed_patient_count" widget="statinfo" string="Confirmed Patients"/>
-                </button>
-            </div>
-            <field name="doctor_image"
-                   widget="image"
-                   class="oe_avatar"
-                   options="{'preview_image': 'doctor_image', 'size': [200, 200]}"/>
-            <div class="oe_title">
-                <label for="doctor_name"/>
-                <h1>
-                    <field name="doctor_name" placeholder="Doctor's Name"/>
-                </h1>
-            </div>
-            <group name="doc_basic_info_id">
-                <field name="specialization" widget="selection" class="oe_inline"/>
-                <field name="doctor_gender" widget="radio" options="{'horizontal': 'true'}"/>
-                <field name="doctor_active_status" widget="boolean_toggle"/>
-            </group>
-            <group>
-                <field name="user_id" widget="selection" class="oe_inline"/>
-            </group>
-            <notebook>
-              <page string="Contact Information">
-                <group name="doc_contact_info_id">
-                  <group name="doc_contact_info_id1">
-<!--                    <field name="doctor_phone" widget="input" style="width: 100%; padding: 5px; border: 1px solid;"/>-->
-                      <field name="doctor_phone" widget="phone" placeholder="+923 23324 324" class="oe_inline"/>
-                      <field name="doctor_email" widget="email" placeholder="xyz@email.com" class="oe_inline"/>
-                  </group>
-                  <group name="doc_contact_info_id2">
-                      <field name="doctor_address"
-                             placeholder="Write current address here..."
-                             widget="text"
-                             class="oe_inline"/>
-                      <field name="doctor_age" placeholder="Doctor's Age" widget="input" class="oe_inline"/>
-                  </group>
+    <record id="doctor_form_view_id" model="ir.ui.view"><field name="name">doctor.form.view.id</field>
+        <field name="model">doctor.model</field>
+        <field name="arch" type="xml">
+            <form string="Doctor Info"><sheet>
+                <div name="button_box">
+                    <button name="display_confirmed_patients" type="object" icon="fa-calendar-check-o">
+                        <field name="confirmed_patient_count" widget="statinfo" string="Confirmed Patients"/>
+                    </button>
+                </div>
+                <field name="doctor_image"
+                       widget="image"
+                       class="oe_avatar"
+                       options="{'preview_image': 'doctor_image', 'size': [200, 200]}"/>
+                <div class="oe_title">
+                    <label for="doctor_name"/>
+                    <h1>
+                        <field name="doctor_name" placeholder="Doctor's Name"/>
+                    </h1>
+                </div>
+                <group name="doc_basic_info_id">
+                    <field name="specialization" widget="selection" class="oe_inline"/>
+                    <field name="doctor_gender" widget="radio" options="{'horizontal': 'true'}"/>
+                    <field name="doctor_active_status" widget="boolean_toggle"/>
                 </group>
-              </page>
-              <page string="Professional Details">
-                  <group name="doc_prof_det_id">
-                      <group name="doc_prof_det_id1">
-                         <field name="specialization"
-                                widget="selection"
-                                style="width: 100%; padding: 5px; border: 1px solid;"/>
-                         <field name="doctor_join_date"
-                                placeholder="xy/xy/xy"
-                                widget="date" style="width: 100%; padding: 5px; border: 1px solid;"/>
-                      </group>
-                      <group name="doc_prof_det_id2">
-                          <field name="doctor_dob"
-                                 placeholder="xy/xy/xy"
-                                 widget="date"
-                                 style="width: 100%; padding: 5px; border: 1px solid;"/>
-                          <field name="doctor_fees"
-                                 widget="input"
-                                 style="width: 100%; padding: 5px; border: 1px solid;"/>
-                      </group>
-                  </group>
-              </page>
-                <page string="Patients Allotted">
-                    <field name="patient_appointed_list" readonly="1">
-                        <tree editable="bottom">
-                            <field name="patient_id" string="Patient"/>
-                            <field name="appointment_date"/>
-                            <field name="is_fee_pay"/>
-                            <field name="state"/>
-                        </tree>
-                    </field>
-                </page>
-            </notebook>
-        </sheet>
-      </form>
-    </field>
-  </record>
-  <record id="action_doc_id" model="ir.actions.act_window">
-<!--    <field name="name">action.doc.id</field>-->
-    <field name="name">Doctors</field>
-    <field name="res_model">doctor.model</field>
-    <field name="view_mode">tree,kanban,form</field>
-  </record>
+                <group>
+                    <field name="user_id" widget="selection" class="oe_inline"/>
+                </group>
+                <notebook>
+                    <page string="Contact Information">
+                        <group name="doc_contact_info_id">
+                            <group name="doc_contact_info_id1">
+                                <!--                    <field name="doctor_phone" widget="input" style="width: 100%; padding: 5px; border: 1px solid;"/>-->
+                                <field name="doctor_phone" widget="phone" placeholder="+923 23324 324" class="oe_inline"/>
+                                <field name="doctor_email" widget="email" placeholder="xyz@email.com" class="oe_inline"/>
+                            </group>
+                            <group name="doc_contact_info_id2">
+                                <field name="doctor_address"
+                                       placeholder="Write current address here..."
+                                       widget="text"
+                                       class="oe_inline"/>
+                                <field name="doctor_age" placeholder="Doctor's Age" widget="input" class="oe_inline"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Professional Details">
+                        <group name="doc_prof_det_id">
+                            <group name="doc_prof_det_id1">
+                                <field name="specialization"
+                                       widget="selection"
+                                       style="width: 100%; padding: 5px; border: 1px solid;"/>
+                                <field name="doctor_join_date"
+                                       placeholder="xy/xy/xy"
+                                       widget="date" style="width: 100%; padding: 5px; border: 1px solid;"/>
+                            </group>
+                            <group name="doc_prof_det_id2">
+                                <field name="doctor_dob"
+                                       placeholder="xy/xy/xy"
+                                       widget="date"
+                                       style="width: 100%; padding: 5px; border: 1px solid;"/>
+                                <field name="doctor_fees"
+                                       widget="input"
+                                       style="width: 100%; padding: 5px; border: 1px solid;"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Patients Allotted">
+                        <field name="patient_appointed_list" readonly="1">
+                            <tree editable="bottom">
+                                <field name="patient_id" string="Patient"/>
+                                <field name="appointment_date"/>
+                                <field name="is_fee_pay"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_doc_id" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
+        <field name="res_model">doctor.model</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
 </odoo>
