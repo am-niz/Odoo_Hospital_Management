@@ -12,7 +12,7 @@ class PatientBillWizard(models.TransientModel):
     fee_paid = fields.Float(string="Fee Paid", readonly=True)
 
     @api.model
-    def default_get(self, fields):
+    def default_get(self, fields): # 'fields parameter is mandatory because default_get is inbuilt function
         res = super(PatientBillWizard, self).default_get(fields)
         if self._context.get("default_patient_id"):
             appointment = self.env["appointment.model"].browse(self._context["default_patient_id"])
