@@ -12,6 +12,43 @@
       </tree>
     </field>
   </record>
+  <record id="view_kanban_patient_id" model="ir.ui.view">
+    <field name="name">patient.kanban.view</field>
+    <field name="model">patient.model</field>
+    <field name="arch" type="xml">
+      <kanban class="o_kanban_mobile">
+        <field name="patient_name"/>
+        <field name="patient_age"/>
+        <field name="patient_gender"/>
+        <field name="patient_image"/>
+        <templates>
+          <t t-name="kanban-box">
+            <div t-attf-class="oe_kanban_global_click">
+              <div class="o_kanban_image">
+                <field name="patient_image" widget="image" options="{'preview_image': 'patient_image', 'size': [60, 110]}"/>
+              </div>
+              <div class="oe_kanban_details">
+                <ul>
+                  <strong><field name="patient_name"/></strong>
+                  <li>
+                    <span title="patient_age">Age:
+                      <field name="patient_age"/>
+                    </span>
+                  </li>
+                  <li>
+                    <span title="Gender">
+                      <i class="fa fa-user me-1"/>
+                      <field name="patient_gender"/>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </t>
+        </templates>
+      </kanban>
+    </field>
+  </record>
   <record id="patient_form_view_id" model="ir.ui.view">
     <field name="name">patient.form.view.id</field>
     <field name="model">patient.model</field>
@@ -33,40 +70,38 @@
             <field name="patient_age" placeholder="Patient's Age" class="oe_inline"/>
             <field name="user_id" widget="selection" class="oe_inline"/>
           </group>
-            <notebook>
-              <page string="Patient Information">
-                <group name="patient_info_id">
-                  <group name="patient_info_id1">
-                    <field name="patient_phone"
-                           placeholder="+91 234 23423"
-                           widget="phone" class="oe_inline"
-                           style="padding: 5px; border: 1px solid;"/>
-                    <field name="patient_email"
-                           placeholder="xyz@emial.com"
-                           widget="email"
-                           style="width: 100%; padding: 5px; border: 1px solid;"/>
-                    <field name="patient_address"
-                           placeholder="Patient address here.."
-                           widget="text"
-                           style="width: 100%; padding: 5px; border: 1px solid;"/>
-                    <field name="patient_blood_group"
-                           widget="selection"
-                           class="oe_inline"
-                           style="padding: 5px; border: 1px solid;"/>
-                  </group>
+          <notebook>
+            <page string="Patient Information">
+              <group name="patient_info_id">
+                <group name="patient_info_id1">
+                  <field name="patient_phone"
+                         placeholder="+91 234 23423"
+                         widget="phone" class="oe_inline"/>
+                  <field name="patient_email"
+                         placeholder="xyz@emial.com"
+                         widget="email"/>
                 </group>
-              </page>
-              <page string="Appointment">
-                <field name="appointment_ids">
-                  <tree editable="1">
-                    <field name="appointment_date"/>
-                    <field name="is_fee_pay"/>
-                    <field name="state"/>
-                    <field name="patient_note"/>
-                  </tree>
-                </field>
-              </page>
-            </notebook>
+                <group name="patient_info_id2">
+                  <field name="patient_blood_group"
+                         widget="selection"
+                         class="oe_inline"/>
+                  <field name="patient_address"
+                         placeholder="Patient address here.."
+                         widget="text"/>
+                </group>
+              </group>
+            </page>
+            <page string="Appointment">
+              <field name="appointment_ids">
+                <tree editable="1">
+                  <field name="appointment_date"/>
+                  <field name="is_fee_pay"/>
+                  <field name="state"/>
+                  <field name="patient_note"/>
+                </tree>
+              </field>
+            </page>
+          </notebook>
         </sheet>
       </form>
     </field>
@@ -74,6 +109,6 @@
   <record id="action_patient_id" model="ir.actions.act_window">
     <field name="name">Patients</field>
     <field name="res_model">patient.model</field>
-    <field name="view_mode">tree,form</field>
+    <field name="view_mode">kanban,tree,form</field>
   </record>
 </odoo>

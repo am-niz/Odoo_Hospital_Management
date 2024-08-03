@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_patient_bill_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="oe_structure"/>
+
+                        <h2 class="mt-4">
+                            <span>Bill # </span>
+                            <span/>
+                        </h2>
+
+                        <div class="row mt-4 mb-2" id="informations">
+                            <div class="col-auto col-3 mw-100 mb-2" name="informations_date">
+                                <strong>Appointment Date:</strong><br/>
+                                <span class="m-0" t-field="o.appointment_date" t-options='{"widget": "date"}'/>
+                            </div>
+                            <div class="col-auto col-3 mw-100 mb-2">
+                                <strong>Doctor:</strong><br/>
+                                <span class="m-0" t-field="o.doctor_id"/>
+                            </div>
+                        </div>
+
+                        <div class="oe_structure"/>
+                        <table class="table table-sm o_main_table table-borderless mt-4" name="order_line_table">
+                            <thead style="display: table-row-group">
+                                <tr>
+                                    <th name="th_patient_name" class="text-start">Name</th>
+                                    <th name="th_patient_note" class="text-end">Description</th>
+                                    <th name="th_doctor" class="text-end">Doctor</th>
+                                    <th name="th_bill_tax" class="text-end">Taxes</th>
+                                    <th name="th_subtotal" class="text-end">
+                                        <span>Amount</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="sale_tbody">
+                                <tr class="bg-200 fw-bold o_line_section">
+                                    <td name="td_patient_name">
+                                        <span t-field="o.patient_id"/>
+                                    </td>
+                                    <td name="td_patient_description" class="text-end">
+                                        <span t-field="o.patient_note"/>
+                                    </td>
+                                    <td name="td_doctor_name" class="text-end">
+                                        <span t-field="o.doctor_id"/>
+                                    </td>
+                                    <td name="bill_taxes" class="text-end">
+                                        <span>Tax 15%</span>
+                                    </td>
+                                    <td name="patient_bill_amount" class="text-end">
+                                        <span t-field="o.doctor_fee"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

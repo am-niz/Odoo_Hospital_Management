@@ -20,7 +20,6 @@
                 <field name="doctor_name"/>
                 <field name="specialization"/>
                 <field name="doctor_image"/>
-                <field name="doctor_image"/>
                 <field name="doctor_active_status"/>
                 <field name="doctor_gender"/>
                 <templates>

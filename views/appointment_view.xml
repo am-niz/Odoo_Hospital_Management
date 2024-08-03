@@ -34,6 +34,15 @@
                             type="object"
                             class="oe_highlight"
                             invisible="is_fee_pay == False"/>
+                    <button name="%(hospital.action_report_patient_card)d"
+                            string="Print Patient Card"
+                            type="action"
+                            class="oe_highlight"/>
+                    <button name="%(hospital.action_report_patient_bill)d"
+                            string="Print Bill"
+                            type="action"
+                            class="oe_highlight"
+                            invisible="is_fee_pay == False"/>
                 </header>
                 <sheet>
                     <group name="appointment_details">
@@ -47,8 +56,8 @@
                         </group>
                         <group name="appointment_details_2">
                             <field name="appointment_date" placeholder="xy/xx/xx" widget="date"/>
-                            <field name="state" widget="selection" style="width: 100%; padding: 5px; border: 1px solid;"/>
-                            <field name="doctor_fee" widget="input" style="padding: 5px; border: 1px solid;"/>
+                            <field name="state" widget="selection" class="oe_inline"/>
+                            <field name="doctor_fee" widget="input" class="oe_inline"/>
                             <field name="is_fee_pay" widget="boolean" class="oe_inline"/>
                         </group>
                     </group>
