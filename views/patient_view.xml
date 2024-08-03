@@ -65,33 +65,32 @@
               <field name="patient_name" placeholder="Patient's Name"/>
             </h1>
           </div>
-          <group name="patient_basic_info_id">
-            <field name="patient_gender" widget="radio" options="{'horizontal': 'True'}"/>
-            <field name="patient_age" placeholder="Patient's Age" class="oe_inline"/>
-            <field name="user_id" widget="selection" class="oe_inline"/>
+          <br/>
+          <group name="patient_info_id">
+            <group name="patient_info_id1">
+              <span class="o_form_label o_td_label" name="address_name">
+                <b>Address</b>
+              </span>
+              <div class="o_address_format">
+                <field name="patient_street1" placeholder="Street..." class="o_address_street"/>
+                <field name="patient_stree2" placeholder="Street 2..." class="o_address_street"/>
+                <field name="patient_city" placeholder="City" class="o_address_city"/>
+                <field name="patient_state" class="o_address_state" placeholder="State"/>
+                <field name="patient_pin_code" class="o_address_zip" placeholder="PIN" />
+                <div name="patient_address_country" class="d-flex justify-content-between">
+                  <field name="patient_country" placeholder="Country" class="o_address_country"/>
+                </div>
+              </div>
+            </group>
+            <group name="patient_info_id2">
+              <field name="patient_gender" widget="radio" options="{'horizontal': 'True'}"/>
+              <field name="patient_age" placeholder="Patient's Age" class="oe_inline"/>
+              <field name="user_id" widget="selection" class="oe_inline"/>
+              <field name="patient_blood_group" widget="selection" class="oe_inline"/>
+            </group>
           </group>
           <notebook>
-            <page string="Patient Information">
-              <group name="patient_info_id">
-                <group name="patient_info_id1">
-                  <field name="patient_phone"
-                         placeholder="+91 234 23423"
-                         widget="phone" class="oe_inline"/>
-                  <field name="patient_email"
-                         placeholder="xyz@emial.com"
-                         widget="email"/>
-                </group>
-                <group name="patient_info_id2">
-                  <field name="patient_blood_group"
-                         widget="selection"
-                         class="oe_inline"/>
-                  <field name="patient_address"
-                         placeholder="Patient address here.."
-                         widget="text"/>
-                </group>
-              </group>
-            </page>
-            <page string="Appointment">
+            <page string="Appointments">
               <field name="appointment_ids">
                 <tree editable="1">
                   <field name="appointment_date"/>
@@ -100,6 +99,12 @@
                   <field name="patient_note"/>
                 </tree>
               </field>
+            </page>
+            <page string="Contact Information">
+              <group name="patient_info_id">
+                <field name="patient_phone" placeholder="+91 234 23423" widget="phone" class="oe_inline"/>
+                <field name="patient_email" placeholder="xyz@emial.com" widget="email"/>
+              </group>
             </page>
           </notebook>
         </sheet>

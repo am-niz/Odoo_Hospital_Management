@@ -75,27 +75,21 @@
                 <group name="doc_basic_info_id">
                     <field name="specialization" widget="selection" class="oe_inline"/>
                     <field name="doctor_gender" widget="radio" options="{'horizontal': 'true'}"/>
-                    <field name="doctor_active_status" widget="boolean_toggle"/>
                 </group>
                 <group>
+                    <field name="doctor_active_status" widget="boolean_toggle"/>
                     <field name="user_id" widget="selection" class="oe_inline"/>
                 </group>
                 <notebook>
-                    <page string="Contact Information">
-                        <group name="doc_contact_info_id">
-                            <group name="doc_contact_info_id1">
-                                <!--                    <field name="doctor_phone" widget="input" style="width: 100%; padding: 5px; border: 1px solid;"/>-->
-                                <field name="doctor_phone" widget="phone" placeholder="+923 23324 324" class="oe_inline"/>
-                                <field name="doctor_email" widget="email" placeholder="xyz@email.com" class="oe_inline"/>
-                            </group>
-                            <group name="doc_contact_info_id2">
-                                <field name="doctor_address"
-                                       placeholder="Write current address here..."
-                                       widget="text"
-                                       class="oe_inline"/>
-                                <field name="doctor_age" placeholder="Doctor's Age" widget="input" class="oe_inline"/>
-                            </group>
-                        </group>
+                    <page string="Patients Allotted">
+                        <field name="patient_appointed_list" readonly="1">
+                            <tree editable="bottom">
+                                <field name="patient_id" string="Patient"/>
+                                <field name="appointment_date"/>
+                                <field name="is_fee_pay"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
                     </page>
                     <page string="Professional Details">
                         <group name="doc_prof_det_id">
@@ -118,15 +112,21 @@
                             </group>
                         </group>
                     </page>
-                    <page string="Patients Allotted">
-                        <field name="patient_appointed_list" readonly="1">
-                            <tree editable="bottom">
-                                <field name="patient_id" string="Patient"/>
-                                <field name="appointment_date"/>
-                                <field name="is_fee_pay"/>
-                                <field name="state"/>
-                            </tree>
-                        </field>
+                    <page string="Contact Information">
+                        <group name="doc_contact_info_id">
+                            <group name="doc_contact_info_id1">
+                                <!--                    <field name="doctor_phone" widget="input" style="width: 100%; padding: 5px; border: 1px solid;"/>-->
+                                <field name="doctor_phone" widget="phone" placeholder="+923 23324 324" class="oe_inline"/>
+                                <field name="doctor_email" widget="email" placeholder="xyz@email.com" class="oe_inline"/>
+                            </group>
+                            <group name="doc_contact_info_id2">
+                                <field name="doctor_address"
+                                       placeholder="Write current address here..."
+                                       widget="text"
+                                       class="oe_inline"/>
+                                <field name="doctor_age" placeholder="Doctor's Age" widget="input" class="oe_inline"/>
+                            </group>
+                        </group>
                     </page>
                 </notebook>
             </sheet>

@@ -31,7 +31,12 @@ class Patient(models.Model):
 
     patient_phone = fields.Char(string="Phone")
     patient_email = fields.Char(string="Email")
-    patient_address = fields.Text(string="Address")
+    patient_street1 = fields.Char(string="Address")
+    patient_stree2 = fields.Char()
+    patient_city = fields.Char()
+    patient_state = fields.Char()
+    patient_pin_code = fields.Char()
+    patient_country = fields.Char()
 
     # doctor_id = fields.Many2one("doctor.model", string="Select Doctor", required=True)
     appointment_ids = fields.One2many('appointment.model', 'patient_id', string='Appointments')
