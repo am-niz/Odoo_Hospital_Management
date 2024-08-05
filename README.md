@@ -27,9 +27,10 @@ This custom Odoo module manages hospital operations, including patient managemen
 
 ## Screen Recording
 
-You can watch the screen recording of the application below:
+To see a demonstration of the module in action, check out the screen recording below:
 
-[Watch the screen recording](static/videos/simplescreenrecorder.mkv)
+[![Hospital Management Module Demo](https://img.youtube.com/vi/FOuBcOgGJ3U/0.jpg)](https://youtu.be/FOuBcOgGJ3U?si=oh6QRCjrrL_IuakB)
+
 
 ## Contributing
 
