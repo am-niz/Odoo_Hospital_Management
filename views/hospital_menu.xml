@@ -19,6 +19,6 @@
               name="Appointments"
               parent="hospital_root_menu_id"
               groups="group_hospital_manager,group_hospital_receptionist"
-              action="action_appointment_id"/>
+              action="hospital.action_appointment_id"/>
 </odoo>
 

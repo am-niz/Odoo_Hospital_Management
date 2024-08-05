@@ -2,17 +2,22 @@
     <record id="appointment_tree_view_id" model="ir.ui.view">
         <field name="name">appointment.tree.view.id</field>
         <field name="model">appointment.model</field>
+        <field name="priority" eval="10"/> <!-- Lower sequence number for higher priority -->
         <field name="arch" type="xml">
             <tree>
                 <field name="patient_id" string="Patient"/>
                 <field name="doctor_id" string="Doctor"/>
                 <field name="appointment_date"/>
+                <field name="is_fee_pay"/>
+                <field name="state"/>
+                <field name="patient_note"/>
             </tree>
         </field>
     </record>
     <record id="appointment_doctor_tree_view_id" model="ir.ui.view">
         <field name="name">appointment.doctor.tree.view.id</field>
         <field name="model">appointment.model</field>
+        <field name="priority" eval="20"/> <!-- Higher sequence number for lower priority -->
         <field name="arch" type="xml">
             <tree>
                 <field name="patient_id" string="Patient"/>
@@ -74,9 +79,5 @@
         <field name="name">Appointments</field>
         <field name="res_model">appointment.model</field>
         <field name="view_mode">tree,form</field>
-        <field name="views" eval="[
-            (ref('hospital.appointment_tree_view_id'), 'tree'),
-            (ref('hospital.appointment_form_view_id'), 'form')
-        ]"/>
     </record>
 </odoo>
